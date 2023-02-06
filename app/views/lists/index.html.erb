@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Lists</h1>
 
 <table class="table table-hover">
@@ -17,11 +15,10 @@
          <td class="fs-4">
              <%= link_to list.description, edit_list_path(list) %>
          </td>
-        <td class="fw-bold <%= list.completed? ? 'text-success' : 'text-danger' %>"><%= list.description %></td>
-        <td><%= list.completed %></td>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="fw-bold <%= list.completed? ? 'text-success' : 'text-danger' %>">
+            <%= list.completed %>
+        </td>
+        <td><%= button_to 'Destroy', list, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New List', new_list_path %>
+<%= button_to 'New List', new_list_path, method: :get, class: "btn btn-success" %>

@@ -14,6 +14,7 @@ bundle install
 source <(curl -sL https://cdn.learnenough.com/yarn_install)
 yarn install --check-files
 rails webpacker:install
+yarn add jquery popper.js bootstrap
 rake db:migrate
 rails
 ```

@@ -45,7 +45,7 @@ class ListsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
-    endco
+    end
   end
 
   # DELETE /lists/1 or /lists/1.json

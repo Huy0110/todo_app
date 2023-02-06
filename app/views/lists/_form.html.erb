@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_field :description class: "form-contril" %>
   </div>
 
   <div class="field">
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
+    <%= form.label :completed, class: "form-check-label" %>
+    <%= form.check_box :completed, class: "form-check-input" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "btn btn-primary"%>
   </div>
 <% end %>

@@ -2,10 +2,11 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <%= link_to "Todo list", root_path, class: "navbar-brand" %>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      
+    <%= form_with(model: @list, class: "d-flex") do |form| %>
+        <%= form.text_field :description, class: "form-control me-2", placeholder: "Add new task" %>
+        <%= form.submit "Create", class: "btn btn-outline-success" %>
+    <% end %>
     </div>
   </div>
 </nav>

@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   # GET /lists or /lists.json
   def index
     @lists = List.all
+    @list = List.new
   end
 
   # GET /lists/1 or /lists/1.json
@@ -44,7 +45,7 @@ class ListsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
-    end
+    endco
   end
 
   # DELETE /lists/1 or /lists/1.json

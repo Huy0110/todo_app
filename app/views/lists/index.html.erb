@@ -5,6 +5,7 @@
     <tr>
       <th>Description</th>
       <th>Completed</th>
+      <th>Action</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,6 +18,19 @@
          </td>
         <td class="fw-bold <%= list.completed? ? 'text-success' : 'text-danger' %>">
             <%= list.completed %>
+        </td>
+        <td>
+            <% if list.completed == false%>
+                <%= form_with(model: list) do |form| %>
+                    <%= form.check_box :completed, checked: true, class: "visually-hidden" %>
+                    <%= form.submit "Complete", class: "btn btn-primary", class: "btn btn-outline-secondary " %>
+                <% end %>
+                <% else %>
+                 <%= form_with(model: list) do |form| %>
+                    <%= form.check_box :completed, checked: false, class: "visually-hidden" %>
+                    <%= form.submit "Un Complete", class: "btn btn-primary", class: "btn btn-outline-secondary " %>
+                <% end %>
+            <% end %>
         </td>
         <td><%= button_to 'Destroy', list, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
       </tr>

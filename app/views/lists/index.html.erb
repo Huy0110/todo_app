@@ -20,16 +20,10 @@
             <%= list.completed %>
         </td>
         <td>
-            <% if list.completed == false%>
-                <%= form_with(model: list) do |form| %>
-                    <%= form.check_box :completed, checked: true, class: "visually-hidden" %>
-                    <%= form.submit "Complete", class: "btn btn-primary", class: "btn btn-outline-secondary " %>
-                <% end %>
-                <% else %>
-                 <%= form_with(model: list) do |form| %>
-                    <%= form.check_box :completed, checked: false, class: "visually-hidden" %>
-                    <%= form.submit "Un Complete", class: "btn btn-primary", class: "btn btn-outline-secondary " %>
-                <% end %>
+            <% if list.completed%>
+                <%= render "lists/uncompleted_button", list: list %>
+            <% else %>
+                 <% render "lists/completed_button". list: list %>
             <% end %>
         </td>
         <td><%= button_to 'Destroy', list, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>

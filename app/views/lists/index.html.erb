@@ -20,10 +20,10 @@
             <%= list.completed %>
         </td>
         <td>
-            <% if list.completed%>
+            <% if list.completed %>
                 <%= render "lists/uncompleted_button", list: list %>
             <% else %>
-                 <% render "lists/completed_button", list: list %>
+                <%= render "lists/completed_button", list: list %>
             <% end %>
         </td>
         <td><%= button_to 'Destroy', list, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>

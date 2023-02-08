@@ -1,11 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+todo app
 
-Things you may want to cover:
+## version
 
-* Ruby version
+- ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-linux]
+
+- Rails 6.0.6.1
+
+## run 
+```
+bundle install
+source <(curl -sL https://cdn.learnenough.com/yarn_install)
+yarn install --check-files
+rails webpacker:install
+yarn add jquery popper.js bootstrap
+yarn add @popperjs/core
+rake db:migrate
+rails
+```
 
 * System dependencies
 

@@ -1,0 +1,37 @@
+<h1>Lists</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Completed</th>
+      <th>Action</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+         <td class="fs-4">
+             <%= link_to list.description, edit_list_path(list) %>
+         </td>
+        <td class="fw-bold <%= list.completed? ? 'text-success' : 'text-danger' %>">
+            <%= list.completed %>
+        </td>
+        <td>
+            <% if list.completed %>
+                <%= render "lists/uncompleted_button", list: list %>
+            <% else %>
+                <%= render "lists/completed_button", list: list %>
+            <% end %>
+        </td>
+        <td><%= button_to 'Destroy', list, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= button_to 'New List', new_list_path, method: :get, class: "btn btn-success" %>

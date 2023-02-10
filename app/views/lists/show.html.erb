@@ -1,38 +1,50 @@
-<p>
-  <strong>Description:</strong>
+<div class="mt-5">
+<p class="fs-5">
+  <strong>List:</strong>
   <%= @list.description %>
 </p>
 
-<p>
-  <strong>Completed:</strong>
-  <%= @list.completed %>
+<p class="fs-5">
+  <strong>Status:</strong>
+  <%= @list.completed?? "Done": "Todo" %>
 </p>
+</div>
 
+<hr class="mb-4"  width="100%" size="5px" align="center" />
 
-<table class="table table-hover">
-  <thead>
+<%= button_to 'New subtask', new_list_subtask_path(@list), method: :get, class: "btn btn-success mb-4" %>
+<table class="table table-striped">
+    <caption>Subtasks</caption>
+   <thead class="table-dark">
     <tr>
       <th>Description</th>
-      <th>Completed</th>
-      <th>Action</th>
-      <th colspan="3"></th>
+      <th>Status</th>
+      <th class="text-center">Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @list.subtasks.each do |subtask| %>
       <tr>
-         <td class="fs-4">
-             <%= link_to subtask.description, edit_list_subtask_path(@list, subtask) %>
+         <td>
+             <%= link_to subtask.description, edit_list_subtask_path(@list, subtask), class: "description_col" %>
          </td>
         <td class="fw-bold <%= subtask.completed? ? 'text-success' : 'text-danger' %>">
             <%= subtask.completed %>
         </td>
-        <td><%= button_to 'Destroy', [@list, subtask], method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+        <td>
+            <div class="d-flex flex-row justify-content-center">
+                <% if subtask.completed %>
+                    <%= render "subtasks/uncompleted_button_subtask", subtask: subtask, class:"mr-5" %>
+                <% else %>
+                    <%= render "subtasks/completed_button_subtask", subtask: subtask %>
+                <% end %>
+                <%= button_to 'Destroy', [@list, subtask], method: :delete, class: "btn btn-danger ms-1", data: { confirm: 'Are you sure?' } %>
+            </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= button_to 'New subtask', new_list_subtask_path(@list), method: :get, class: "btn btn-success" %>
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>

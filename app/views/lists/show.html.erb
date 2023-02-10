@@ -8,5 +8,31 @@
   <%= @list.completed %>
 </p>
 
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Completed</th>
+      <th>Action</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @list.subtasks.each do |subtask| %>
+      <tr>
+         <td class="fs-4">
+             <%= link_to subtask.description, edit_list_subtask_path(@list, subtask) %>
+         </td>
+        <td class="fw-bold <%= subtask.completed? ? 'text-success' : 'text-danger' %>">
+            <%= subtask.completed %>
+        </td>
+        <td><%= button_to 'Destroy', [@list, subtask], method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to 'New subtask', new_list_subtask_path(@list), method: :get, class: "btn btn-success" %>
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>

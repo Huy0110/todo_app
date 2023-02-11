@@ -55,4 +55,14 @@ ActiveRecord::Schema.define(version: 2023_02_10_194719) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  create_table "subtasks", force: :cascade do |t|
+    t.string "description"
+    t.boolean "completed"
+    t.integer "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_subtasks_on_list_id"
+  end
+
+  add_foreign_key "subtasks", "lists"
 end

@@ -12,6 +12,11 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+
+  def show
+      @list_comment = ListComment.new
+  end
+
   # GET /lists/new
   def new
     @list = List.new

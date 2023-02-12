@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :list_comments
   get 'users/show'
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :lists do
